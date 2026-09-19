@@ -14,7 +14,7 @@
 import os
 import pathlib
 import re
-from typing import Optional
+from typing import Optional, Tuple
 
 from config import (
     NVIDIA_DEB_REPO_KEYRING_URL,
@@ -95,7 +95,7 @@ class DebianInstaller(LinuxInstaller):
         raise RebootRequired
 
     @staticmethod
-    def _kernel_version_key(match: tuple[str, str]) -> tuple[int, tuple[int, ...]]:
+    def _kernel_version_key(match: Tuple[str, str]) -> Tuple[int, Tuple[int, ...]]:
         """
         Sort key for kernel package matches, comparing numerically rather than
         as strings. String ordering ranks 6.12.96 above 6.12.105, and ABI 9
